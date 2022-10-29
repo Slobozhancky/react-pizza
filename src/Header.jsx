@@ -1,7 +1,11 @@
 import React from "react";
 import logo from "./assets/img/pizza-logo.svg";
+import Button from "./Button";
 
 function Header(params) {
+    function sayHello() {
+        alert('Hello');
+    }
     return (
         <div className="header">
             <div className="container">
@@ -13,7 +17,7 @@ function Header(params) {
                     </div>
                 </div>
                 <div className="header__cart">
-                    <a href="/cart.html" className="button button--cart">
+                    <Button onClick={sayHello} classButtonCart='button--cart'>
                         <span>150 ₴</span>
                         <div className="button__delimiter"></div>
                         <svg
@@ -46,7 +50,7 @@ function Header(params) {
                             />
                         </svg>
                         <span>3</span>
-                    </a>
+                    </Button>
                 </div>
             </div>
         </div>

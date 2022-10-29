@@ -1,14 +1,10 @@
 import React from "react";
-import Button from "./Button.jsx";
 import Header from "./Header.jsx";
 
 function App() {
     return (
         <div className="wrapper">
             <Header />
-
-            <Button>New button 1</Button>
-            <Button outline>New button 2</Button>
 
             <div className="content">
                 <div className="container">

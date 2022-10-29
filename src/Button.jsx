@@ -1,14 +1,20 @@
 import React from "react";
 import className from "classnames";
 
-export default function Button(props) {
+export default function Button({
+    onClick,
+    outline,
+    classButtonCart,
+    children,
+}) {
     return (
         <button
-            className={className("button", {
-                "button--outline": props.outline,
+            onClick={onClick}
+            className={className("button", classButtonCart, {
+                "button--outline": outline,
             })}
         >
-            {props.children}
+            {children}
         </button>
     );
 }
