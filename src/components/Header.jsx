@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "./assets/img/pizza-logo.svg";
-import Button from "./Button";
+import logo from "../assets/img/pizza-logo.svg";
+import Button from "./Button.jsx";
 
 function Header(params) {
     function sayHello() {
