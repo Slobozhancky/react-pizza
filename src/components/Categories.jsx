@@ -1,8 +1,10 @@
 import React from "react";
 
-export default function Categories({ items, onClickItem }) {
+export default function Categories({ items }) {
     const [activeItem, setActiveItem] = React.useState(null);
 
+    // items && items.map((item, index)... - эта проверка, говорит нам о том, что если items === undefined то ничего не возвращать
+    // если items === true, a true может бы в случае если в массиве что-то есть, то выполнить метод .map 
     return (
         <div className="categories">
             <ul>
@@ -13,7 +15,7 @@ export default function Categories({ items, onClickItem }) {
                     Все
                 </li>
 
-                {items.map((item, index) => (
+                {items && items.map((item, index) => (
                     <li
                         className={index === activeItem ? "active" : ""}
                         onClick={() => setActiveItem(index)}
