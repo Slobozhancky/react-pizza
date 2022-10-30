@@ -1,47 +1,66 @@
 import React from "react";
 
-export default class Categories extends React.Component {
-    state = {
-        activeItem: 2,
-    };
+export default function Categories({ items, onClickItem }) {
+    const [activeItem, setActiveItem] = React.useState(null);
 
-    onSelectItem = item => {
-        this.setState({
-            activeItem: item
-        })
-    }
-    
-    render() {
-        const { items, onClickItem } = this.props;
-        return (
-            <div className="categories">
-                <ul>
-                    <li>Все</li>
-                    {items.map((item, index) => (
-                        <li
-                            className={index === this.state.activeItem ? "active" : ""}
-                            onClick={() => this.onSelectItem(index)}
-                            key={`${item}_${index}`}
-                        >
-                            {item}
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        );
-    }
+    return (
+        <div className="categories">
+            <ul>
+                <li
+                    className={activeItem === null ? "active" : ""}
+                    onClick={() => setActiveItem(null)}
+                >
+                    Все
+                </li>
+
+                {items.map((item, index) => (
+                    <li
+                        className={index === activeItem ? "active" : ""}
+                        onClick={() => setActiveItem(index)}
+                        key={`${item}_${index}`}
+                    >
+                        {item}
+                    </li>
+                ))}
+            </ul>
+        </div>
+    );
 }
 
-// export default function Categories({ items, onClickItem }) {
-//     return (
-//         <div className="categories">
-//             <ul>
-//                 <li className="active">Все</li>
+// **************************************************************
+// Пример использования класоваго компонента с state / setState()
+// **************************************************************
 
-//                 {items.map((item, index) => (
-//                     <li onClick={() => onClickItem(item)} key={`${item}_${index}`}>{item}</li>
-//                 ))}
-//             </ul>
-//         </div>
-//     );
+// export default class Categories extends React.Component {
+//     state = {
+//         activeItem: 2,
+//     };
+
+//     onSelectItem = (item) => {
+//         this.setState({
+//             activeItem: item,
+//         });
+//     };
+
+//     render() {
+//         const { items } = this.props;
+//         return (
+//             <div className="categories">
+//                 <ul>
+//                     <li>Все</li>
+//                     {items.map((item, index) => (
+//                         <li
+//                             className={
+//                                 index === this.state.activeItem ? "active" : ""
+//                             }
+//                             onClick={() => this.onSelectItem(index)}
+//                             key={`${item}_${index}`}
+//                         >
+//                             {item}
+//                         </li>
+//                     ))}
+//                 </ul>
+//             </div>
+//         );
+//     }
 // }
