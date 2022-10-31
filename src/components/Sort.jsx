@@ -12,6 +12,22 @@ function Sort({ popupItems }) {
         setVisibleSort(!visibleSort);
     }
 
+    // Logic for hidden sort block ***************
+    let sortBlock = React.useRef();
+
+    function handleOutsideClick(e) {
+        if (!e.path.includes(sortBlock.current)) {
+            setVisibleSort(false);
+        }
+    }
+
+    React.useEffect(() => {
+        document
+            .querySelector("body")
+            .addEventListener("click", handleOutsideClick);
+    }, []);
+    // ********************************************
+
     let items = popupItems.map((item, index) => (
         <li
             className={activeItem === item ? "active" : ""}
@@ -23,7 +39,7 @@ function Sort({ popupItems }) {
     ));
 
     return (
-        <div className="sort">
+        <div ref={sortBlock} className="sort">
             <div className="sort__label">
                 <svg
                     width="10"
@@ -38,9 +54,7 @@ function Sort({ popupItems }) {
                     />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={toggleVisiblePopup}>
-                    {activeItem}
-                </span>
+                <span onClick={toggleVisiblePopup}>{activeItem}</span>
             </div>
             {visibleSort && (
                 <div className="sort__popup">
