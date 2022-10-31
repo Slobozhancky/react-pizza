@@ -6,6 +6,7 @@ function Sort({ popupItems }) {
 
     function changeActiveItem(item) {
         setActiveItem(item);
+        setVisibleSort(false);
     }
 
     function toggleVisiblePopup() {
@@ -42,6 +43,7 @@ function Sort({ popupItems }) {
         <div ref={sortBlock} className="sort">
             <div className="sort__label">
                 <svg
+                    className={visibleSort ? "rotated" : ""}
                     width="10"
                     height="6"
                     viewBox="0 0 10 6"
