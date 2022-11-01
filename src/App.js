@@ -20,7 +20,7 @@ function App() {
         <div className="wrapper">
             <Header />
             <Routes>
-                <Route path="/react-pizza" element={<Home pizzas={pizzas} />} />
+                <Route path="/react-pizza" element={<Home items={pizzas} />} />
                 <Route path="cart" element={<Cart />} />
             </Routes>
         </div>

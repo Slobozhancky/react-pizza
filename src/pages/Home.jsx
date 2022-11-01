@@ -1,7 +1,7 @@
 import React from "react";
 import { Categories, Sort, PizzaBlock } from "../components";
 
-function Home(props) {
+function Home({ items }) {
     return (
         <div className="content">
             <div className="container">
@@ -19,7 +19,9 @@ function Home(props) {
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
-                    <PizzaBlock />
+                    {items.map((obj) => (
+                        <PizzaBlock key={obj.key} {...obj} />
+                    ))}
                 </div>
             </div>
         </div>
