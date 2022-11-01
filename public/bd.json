@@ -1,0 +1,34 @@
+{
+    "pizzas": [
+        {
+            "id": 0,
+            "imageUrl": "https://ecopizza.com.ua/files/products/popper-chili.480x480.png?74be0da7a86ab7457ccdfc2df89b952e",
+            "name": "Popper Chili",
+            "types": [0, 1],
+            "size": [26, 30, 40],
+            "price": 219,
+            "category": 0,
+            "rating": 3
+        },
+        {
+            "id": 1,
+            "imageUrl": "https://ecopizza.com.ua/files/products/2novyj.480x480.png?435539cfb468e26d89134dd0f862a862",
+            "name": "Цезар",
+            "types": [0, 1],
+            "size": [26, 30, 40],
+            "price": 239,
+            "category": 0,
+            "rating": 4
+        },
+        {
+            "id": 2,
+            "imageUrl": "https://ecopizza.com.ua/files/products/mexi.480x480.png?400b431cf8781493bf4cb47ac1873bab",
+            "name": "Мексика Лайф",
+            "types": [0, 1],
+            "size": [26, 30, 40],
+            "price": 179,
+            "category": 0,
+            "rating": 4
+        }
+    ]
+}
