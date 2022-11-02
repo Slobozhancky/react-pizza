@@ -1,5 +1,8 @@
 import React from "react";
 import { Categories, Sort, PizzaBlock } from "../components";
+import { pizzas } from "../utils/db.js";
+
+console.log(pizzas);
 
 function Home({ items }) {
     return (
@@ -19,7 +22,7 @@ function Home({ items }) {
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
-                    {items.map((obj) => (
+                    {pizzas.map((obj) => (
                         <PizzaBlock key={obj.key} {...obj} />
                     ))}
                 </div>
