@@ -10,7 +10,6 @@ function PizzaBlock({ name, price, imageUrl, types, sizes }) {
     // Почему type[0] передаем в useState ? Причина тому то что, types может состоять только из 1го элемента
     const [activeType, setActiveType] = React.useState(types[0]);
     const [activeSize, setActiveSize] = React.useState(sizes[0]);
-    console.log(activeSize);
 
     function changeType(index) {
         setActiveType(index);

@@ -1,8 +1,8 @@
 import React from "react";
 import { Categories, Sort, PizzaBlock } from "../components";
-import { pizzas } from "../utils/db.js";
+// import { pizzas } from "../utils/db.js";
 
-console.log(pizzas);
+// console.log(pizzas); // это файл который находится в ../utils/db.js, он такой же который мы получаем в <App/> при помощи fetch c папки public
 
 function Home({ items }) {
     return (
@@ -22,8 +22,8 @@ function Home({ items }) {
                 </div>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
-                    {pizzas.map((obj) => (
-                        <PizzaBlock key={obj.key} {...obj} />
+                    {items.map((obj) => (
+                        <PizzaBlock key={obj.id} {...obj} />
                     ))}
                 </div>
             </div>
