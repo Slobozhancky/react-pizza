@@ -1,19 +1,57 @@
 import React from "react";
+import classNames from "classnames";
 
-function PizzaBlock({ name, price, imgUrl }) {
+function PizzaBlock({ name, price, imageUrl, types, sizes }) {
+    // Тут мы вписываем все возможные размеры и типы,  а уже в рендер будет происходить с
+    // учетом тех данных которые будет переданы с database
+    const availableTypes = ["тонкое", "класическое"];
+    const availableSizes = [26, 30, 40];
+
+    // Почему type[0] передаем в useState ? Причина тому то что, types может состоять только из 1го элемента
+    const [activeType, setActiveType] = React.useState(types[0]);
+    const [activeSize, setActiveSize] = React.useState(sizes[0]);
+    console.log(activeSize);
+
+    function changeType(index) {
+        setActiveType(index);
+    }
+
+    function changeSize(index) {
+        setActiveSize(index);
+    }
+
     return (
         <div className="pizza-block">
-            <img className="pizza-block__image" src={imgUrl} alt="Pizza" />
+            <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонке</li>
-                    <li>традиційне</li>
+                    {availableTypes.map((type, index) => (
+                        <li
+                            key={type}
+                            className={classNames({
+                                active: activeType === index,
+                                disabled: !types.includes(index),
+                            })}
+                            onClick={() => changeType(index)}
+                        >
+                            {type}
+                        </li>
+                    ))}
                 </ul>
                 <ul>
-                    <li className="active">26 см.</li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    {availableSizes.map((size, index) => (
+                        <li
+                            key={size}
+                            className={classNames({
+                                active: activeSize === size,
+                                disabled: !sizes.includes(size),
+                            })}
+                            onClick={() => changeSize(size)}
+                        >
+                            {size + "см."}
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
