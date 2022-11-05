@@ -8,10 +8,12 @@ function App() {
     let [pizzas, setPizzas] = React.useState([]);
 
     React.useEffect(() => {
-        axios("http://localhost:3000/react-pizza/bd.json").then(({data}) => {
+        axios("http://localhost:3000/react-pizza/bd.json").then(({ data }) => {
             return setPizzas(data.pizzas);
         });
     }, []);
+
+    console.log(pizzas);
 
     return (
         <div className="wrapper">

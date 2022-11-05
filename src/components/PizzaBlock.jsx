@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-
+import PropTypes from "prop-types";
 function PizzaBlock({ name, price, imageUrl, types, sizes }) {
     // Тут мы вписываем все возможные размеры и типы,  а уже в рендер будет происходить с
     // учетом тех данных которые будет переданы с database
@@ -75,5 +75,17 @@ function PizzaBlock({ name, price, imageUrl, types, sizes }) {
         </div>
     );
 }
+
+PizzaBlock.propTypes = {
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    types: PropTypes.arrayOf(PropTypes.number).isRequired,
+    sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+};
+
+PizzaBlock.defaultProps = {
+    sizes: [],
+};
 
 export default PizzaBlock;
