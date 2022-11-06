@@ -2,7 +2,7 @@ import React from "react";
 
 function Sort({ popupItems }) {
     let [visibleSort, setVisibleSort] = React.useState(false);
-    let [activeItem, setActiveItem] = React.useState(popupItems[0]);
+    let [activeItem, setActiveItem] = React.useState(popupItems[0].name);
 
     function changeActiveItem(item) {
         setActiveItem(item);
@@ -31,11 +31,11 @@ function Sort({ popupItems }) {
 
     let items = popupItems.map((item, index) => (
         <li
-            className={activeItem === item ? "active" : ""}
-            key={item + index}
-            onClick={() => changeActiveItem(item)}
+            className={activeItem === item.name ? "active" : ""}
+            key={item.name + index}
+            onClick={() => changeActiveItem(item.name)}
         >
-            {item}
+            {item.name}
         </li>
     ));
 

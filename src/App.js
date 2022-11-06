@@ -3,7 +3,6 @@ import { Header } from "./components";
 import { Home, Cart } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-
 function App() {
     let [pizzas, setPizzas] = React.useState([]);
 
@@ -12,8 +11,6 @@ function App() {
             return setPizzas(data.pizzas);
         });
     }, []);
-
-    console.log(pizzas);
 
     return (
         <div className="wrapper">
