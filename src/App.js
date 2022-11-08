@@ -3,24 +3,34 @@ import { Header } from "./components";
 import { Home, Cart } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-function App() {
-    let [pizzas, setPizzas] = React.useState([]);
-
-    React.useEffect(() => {
+import { connect } from "react-redux";
+import store from "./redux/store";
+import { setPizzas } from "./redux/actions/pizzas";
+class App extends React.Component {
+    componentDidMount() {
         axios("http://localhost:3000/react-pizza/bd.json").then(({ data }) => {
-            return setPizzas(data.pizzas);
+            window.store.dispatch(setPizzas(data.pizzas));
         });
-    }, []);
+    }
 
-    return (
-        <div className="wrapper">
-            <Header />
-            <Routes>
-                <Route path="/react-pizza" element={<Home items={pizzas} />} />
-                <Route path="cart" element={<Cart />} />
-            </Routes>
-        </div>
-    );
+    render() {
+        console.log(this.props.items);
+        return (
+            <div className="wrapper">
+                <Header />
+                <Routes>
+                    <Route path="/react-pizza" element={<Home items={this.props.items} />} />
+                    <Route path="cart" element={<Cart />} />
+                </Routes>
+            </div>
+        );
+    }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        items: state.pizzas.items,
+    };
+};
+
+export default connect(mapStateToProps)(App);
