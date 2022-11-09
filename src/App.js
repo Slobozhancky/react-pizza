@@ -3,46 +3,78 @@ import { Header } from "./components";
 import { Home, Cart } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
-import { connect } from "react-redux";
-// import store from "./redux/store";
+
+import { useSelector, useDispatch } from "react-redux";
 import { setPizzas } from "./redux/actions/pizzas";
-class App extends React.Component {
-    componentDidMount() {
+
+const App = () => {
+
+    let store = useSelector(({ pizzas, filters }) => {
+        return {
+            items: pizzas.items,
+            sortBy: filters.sortBy,
+        };
+    });
+
+    let dispatch = useDispatch();
+
+    React.useEffect(() => {
         axios("http://localhost:3000/react-pizza/bd.json").then(({ data }) => {
-           this.props.setPizzas(data.pizzas);
+            dispatch(setPizzas(data.pizzas));
         });
-    }
+    });
 
-    render() {
-        console.log(this.props);
-        return (
-            <div className="wrapper">
-                <Header />
-                <Routes>
-                    <Route
-                        path="/react-pizza"
-                        element={<Home items={this.props.items} />}
-                    />
-                    <Route path="cart" element={<Cart />} />
-                </Routes>
-            </div>
-        );
-    }
-}
-
-const mapStateToProps = (state) => {
-    return {
-        items: state.pizzas.items,
-        filters: state.filters
-    };
+    return (
+        <div className="wrapper">
+            <Header />
+            <Routes>
+                <Route
+                    path="/react-pizza"
+                    element={<Home items={store.items} />}
+                />
+                <Route path="cart" element={<Cart />} />
+            </Routes>
+        </div>
+    );
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setPizzas: (items) => {
-            dispatch(setPizzas(items));
-        },
-    };
-};
+export default App;
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// class App extends React.Component {
+//     componentDidMount() {
+
+//     }
+
+//     render() {
+//         console.log(this.props);
+//         return (
+//             <div className="wrapper">
+//                 <Header />
+//                 <Routes>
+//                     <Route
+//                         path="/react-pizza"
+//                         element={<Home items={this.props.items} />}
+//                     />
+//                     <Route path="cart" element={<Cart />} />
+//                 </Routes>
+//             </div>
+//         );
+//     }
+// }
+
+// const mapStateToProps = (state) => {
+//     return {
+//         items: state.pizzas.items,
+//         filters: state.filters,
+//     };
+// };
+
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         setPizzas: (items) => {
+//             dispatch(setPizzas(items));
+//         },
+//     };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
