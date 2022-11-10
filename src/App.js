@@ -4,18 +4,10 @@ import { Home, Cart } from "./pages";
 import { Route, Routes } from "react-router-dom";
 import axios from "axios";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setPizzas } from "./redux/actions/pizzas";
 
 const App = () => {
-
-    let store = useSelector(({ pizzas, filters }) => {
-        return {
-            items: pizzas.items,
-            sortBy: filters.sortBy,
-        };
-    });
-
     let dispatch = useDispatch();
 
     React.useEffect(() => {
@@ -28,10 +20,7 @@ const App = () => {
         <div className="wrapper">
             <Header />
             <Routes>
-                <Route
-                    path="/react-pizza"
-                    element={<Home items={store.items} />}
-                />
+                <Route path="/react-pizza" element={<Home />} />
                 <Route path="cart" element={<Cart />} />
             </Routes>
         </div>

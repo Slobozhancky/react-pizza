@@ -1,10 +1,17 @@
 import React from "react";
 import { Categories, Sort, PizzaBlock } from "../components";
-// import { pizzas } from "../utils/db.js";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setCategory } from "../redux/actions/filters";
 
 // console.log(pizzas); // это файл который находится в ../utils/db.js, он такой же который мы получаем в <App/> при помощи fetch c папки public
 
-function Home({ items }) {
+function Home() {
+    let dispatch = useDispatch();
+    let items = useSelector(({ pizzas }) => pizzas.items);
+
+    console.log(dispatch);
+
     return (
         <div className="content">
             <div className="container">
@@ -17,6 +24,7 @@ function Home({ items }) {
                             "Острые",
                             "Закрытые",
                         ]}
+                        onClickItem={(index) => dispatch(setCategory(index))}
                     />
                     <Sort
                         popupItems={[

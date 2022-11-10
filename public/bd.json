@@ -48,6 +48,36 @@
             "price": 159,
             "category": 0,
             "rating": 4
+        },
+        {
+            "id": 5,
+            "imageUrl": "https://ecopizza.com.ua/files/products/fpizza.480x480.png?98327defa2a28ccbf597d1f4fc2baae0",
+            "name": "Фітнес",
+            "types": [0, 1],
+            "sizes": [26, 30, 40],
+            "price": 219,
+            "category": 0,
+            "rating": 3
+        },
+        {
+            "id": 6,
+            "imageUrl": "https://ecopizza.com.ua/files/products/dfv.480x480.png?7471c0f03400a2f84b02406f40b192b2",
+            "name": "Грибна",
+            "types": [1],
+            "sizes": [30, 40],
+            "price": 249,
+            "category": 0,
+            "rating": 3
+        },
+        {
+            "id": 8,
+            "imageUrl": "https://ecopizza.com.ua/files/products/bavaria_1.480x480.png?e8a482da96a370fabcaf0100d391390e",
+            "name": "Баварія",
+            "types": [0, 1],
+            "sizes": [26, 30, 40],
+            "price": 199,
+            "category": 0,
+            "rating": 4
         }
     ]
 }

@@ -1,10 +1,15 @@
 import React from "react";
 
-export default function Categories({ items }) {
+export default function Categories({ items, onClickItem }) {
     const [activeItem, setActiveItem] = React.useState(null);
 
     // items && items.map((item, index)... - эта проверка, говорит нам о том, что если items === undefined то ничего не возвращать
-    // если items === true, a true может бы в случае если в массиве что-то есть, то выполнить метод .map 
+    // если items === true, a true может бы в случае если в массиве что-то есть, то выполнить метод .map
+
+    function selectCategory(index) {
+        setActiveItem(index);
+        onClickItem(index);
+    }
     return (
         <div className="categories">
             <ul>
@@ -15,15 +20,16 @@ export default function Categories({ items }) {
                     Все
                 </li>
 
-                {items && items.map((item, index) => (
-                    <li
-                        className={index === activeItem ? "active" : ""}
-                        onClick={() => setActiveItem(index)}
-                        key={`${item}_${index}`}
-                    >
-                        {item}
-                    </li>
-                ))}
+                {items &&
+                    items.map((item, index) => (
+                        <li
+                            className={index === activeItem ? "active" : ""}
+                            onClick={() => selectCategory(index)}
+                            key={`${item}_${index}`}
+                        >
+                            {item}
+                        </li>
+                    ))}
             </ul>
         </div>
     );
