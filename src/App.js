@@ -11,7 +11,7 @@ const App = () => {
     let dispatch = useDispatch();
 
     React.useEffect(() => {
-        axios("http://localhost:3000/react-pizza/bd.json").then(({ data }) => {
+        axios("http://localhost:3000/react-pizza/db.json").then(({ data }) => {
             dispatch(setPizzas(data.pizzas));
         });
     });

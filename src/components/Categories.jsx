@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Categories({ items, onClickItem }) {
+const Categories = React.memo(function Categories({ items, onClickItem }) {
     const [activeItem, setActiveItem] = React.useState(null);
 
     // items && items.map((item, index)... - эта проверка, говорит нам о том, что если items === undefined то ничего не возвращать
@@ -33,7 +33,9 @@ export default function Categories({ items, onClickItem }) {
             </ul>
         </div>
     );
-}
+});
+
+export default Categories;
 
 // **************************************************************
 // Пример использования класоваго компонента с state / setState()
