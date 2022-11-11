@@ -11,10 +11,16 @@ const App = () => {
     let dispatch = useDispatch();
 
     React.useEffect(() => {
-        axios("http://localhost:3000/react-pizza/db.json").then(({ data }) => {
-            dispatch(setPizzas(data.pizzas));
+        axios("http://localhost:3001/pizzas?_sort=price&_order=asc").then(({ data }) => {
+            dispatch(setPizzas(data ? data : []));
         });
     });
+
+    // React.useEffect(() => {
+    //     axios("http://localhost:3000/react-pizza").then(({ data }) => {
+    //         dispatch(setPizzas(data.pizzas));
+    //     });
+    // });
 
     return (
         <div className="wrapper">
