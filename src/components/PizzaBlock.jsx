@@ -1,6 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
+import ContentLoader from "react-content-loader";
 function PizzaBlock({ name, price, imageUrl, types, sizes }) {
     // Тут мы вписываем все возможные размеры и типы,  а уже в рендер будет происходить с
     // учетом тех данных которые будет переданы с database
@@ -18,6 +19,23 @@ function PizzaBlock({ name, price, imageUrl, types, sizes }) {
     function changeSize(index) {
         setActiveSize(index);
     }
+
+    return (
+        <ContentLoader
+            speed={2}
+            width={280}
+            height={500}
+            viewBox="0 0 280 500"
+            backgroundColor="#f3f3f3"
+            foregroundColor="#ecebeb"
+        >
+            <circle cx="144" cy="147" r="130" />
+            <rect x="2" y="338" rx="0" ry="0" width="280" height="84" />
+            <rect x="3" y="438" rx="0" ry="0" width="94" height="44" />
+            <rect x="130" y="437" rx="25" ry="25" width="151" height="44" />
+            <rect x="1" y="297" rx="0" ry="0" width="280" height="24" />
+        </ContentLoader>
+    );
 
     return (
         <div className="pizza-block">
